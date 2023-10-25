@@ -2,22 +2,21 @@
 """ Console Module """
 import cmd
 import sys
+import re
 from models.base_model import BaseModel
 from models.__init__ import storage
+from datetime import datetime
+import uuid
 from models.user import User
 from models.place import Place
+import os
 from models.state import State
-from models.city import City
 from models.amenity import Amenity
 from models.review import Review
-import re
-import os
-import uuid
-from datetime import datetime
-
+from models.city import City
 
 class HBNBCommand(cmd.Cmd):
-    """ Contains the functionality for the HBNB console"""
+    """ describes the functions supported by the HBNB console"""
 
     # determines prompt for interactive/non-interactive modes
     prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
@@ -35,12 +34,12 @@ class HBNBCommand(cmd.Cmd):
             }
 
     def preloop(self):
-        """Prints if isatty is false"""
+        """to print if isatty is false"""
         if not sys.__stdin__.isatty():
             print('(hbnb)')
 
     def precmd(self, line):
-        """Reformat command line for advanced command syntax.
+        """for advanced command syntax reformat command line.
 
         Usage: <class name>.<command>([<id> [<*args> or <**kwargs>]])
         (Brackets denote optional fields in usage example.)
@@ -91,26 +90,26 @@ class HBNBCommand(cmd.Cmd):
             return line
 
     def postcmd(self, stop, line):
-        """Prints if isatty is false"""
+        """to print if isatty is false"""
         if not sys.__stdin__.isatty():
             print('(hbnb) ', end='')
         return stop
 
     def do_quit(self, command):
-        """ Method to exit the HBNB console"""
+        """ way to exit the HBNB console"""
         exit()
 
     def help_quit(self):
         """ Prints the help documentation for quit  """
-        print("Exits the program with formatting\n")
+        print("a way to exit the program with formatting\n")
 
     def do_EOF(self, arg):
-        """ Handles EOF to exit program """
+        """a way to handle EOF to exit program """
         print()
         exit()
 
     def help_EOF(self):
-        """ Prints the help documentation for EOF """
+        """ function to print the help documentation for EOF """
         print("Exits the program without formatting\n")
 
     def emptyline(self):

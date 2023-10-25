@@ -1,23 +1,22 @@
 #!/usr/bin/python3
-"""A unit test module for the console (command interpreter)."""
+"""This is a  unit test module made for the console _command interpreter_."""
+import unittest
 from unittest.mock import patch
 from console import HBNBCommand
 from tests import clear_stream
+import os
 from models.user import User
+import MySqldb
 from models import storage
 from io import StringIO
 import sqlalchemy
-import unittest
-import MySQLdb
-import os
-
 
 class TestHBNBCommand(unittest.TestCase):
-    """Represents the test class for the HBNBCommand"""
+    """function to ckeck the test class for the HBNBCommand"""
     @unittest.skipIf(
         os.getenv('HBNB_TYPE_STORAGE') == 'db', 'FileStorage test')
     def test_fs_create(self):
-        """Tests the create command with the file storage"""
+        """function to check the create command by the file storage"""
         with patch('sys.stdout', new=StringIO()) as cout:
             cons = HBNBCommand()
             cons.onecmd('create City name="Maamoura"')
@@ -39,7 +38,7 @@ class TestHBNBCommand(unittest.TestCase):
     @unittest.skipIf(
         os.getenv('HBNB_TYPE_STORAGE') != 'db', 'DBStorage test')
     def test_db_create(self):
-        """Tests the create command with the database storage"""
+        """another function to check  the create command now by the database storage"""
         with patch('sys.stdout', new=StringIO()) as cout:
             cons = HBNBCommand()
             with self.assertRaises(sqlalchemy.exc.OperationalError):
@@ -67,7 +66,7 @@ class TestHBNBCommand(unittest.TestCase):
     @unittest.skipIf(
         os.getenv('HBNB_TYPE_STORAGE') != 'db', 'DBStorage test')
     def test_db_show(self):
-        """Tests the show command with the database storage"""
+        """check show command by the help of the database storage"""
         with patch('sys.stdout', new=StringIO()) as cout:
             cons = HBNBCommand()
             # showing a User instance
@@ -111,7 +110,7 @@ class TestHBNBCommand(unittest.TestCase):
     @unittest.skipIf(
         os.getenv('HBNB_TYPE_STORAGE') != 'db', 'DBStorage test')
     def test_db_count(self):
-        """Tests the count command with the database storage"""
+        """check the count command by the help of database storage"""
         with patch('sys.stdout', new=StringIO()) as cout:
             cons = HBNBCommand()
             dbc = MySQLdb.connect(
