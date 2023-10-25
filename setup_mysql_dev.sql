@@ -2,7 +2,7 @@
 -- create database
 CREATE DATABASE IF NOT EXISTS hbnb_dev_db;
 
--- create user if not exist
+-- this create user if not exist
 -- user should be identified with password hbnb_dev_pwd
 CREATE USER IF NOT EXISTS 'hbnb_dev'@'localhost' IDENTIFIED BY 'hbnb_dev_pwd';
 

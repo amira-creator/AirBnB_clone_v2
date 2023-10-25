@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Place Module for HBNB project """
+"""This is  place Module for HBNB project """
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey, Integer, Float
 from sqlalchemy.orm import relationship
@@ -19,7 +19,7 @@ if getenv("HBNB_TYPE_STORAGE") == 'db':
 
 
 class Place(BaseModel, Base):
-    """ A place to stay """
+    """It is place to stay """
     __tablename__ = 'places'
     if getenv("HBNB_TYPE_STORAGE") == 'db':
         city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
@@ -51,7 +51,7 @@ class Place(BaseModel, Base):
 
         @property
         def reviews(self):
-            """returns list of review instances with place_id"""
+            """It returns list of review instances with place_id"""
             from models import storage
             all_reviews = storage.all(Review)
             r_list = []
@@ -62,7 +62,7 @@ class Place(BaseModel, Base):
 
         @property
         def amenities(self):
-            """returns the list of Amenity instances"""
+            """It returns list of Amenity instances"""
             from models import storage
             all_amenities = storage.all(Amenity)
             a_list = []
@@ -73,7 +73,7 @@ class Place(BaseModel, Base):
 
         @amenities.setter
         def amenities(self, obj):
-            """method for adding an Amenity.id to the"""
+            """This method for adding amenity.id"""
             if obj is not None:
                 if isinstance(obj, Amenity):
                     if obj.id not in self.amenity_ids:

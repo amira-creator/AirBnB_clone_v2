@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" State Module for HBNB project """
+"""It is state Module for HBNB project """
 from models.base_model import BaseModel, Base
 from models.city import City
 from sqlalchemy import Column, String
@@ -8,7 +8,7 @@ from os import getenv
 
 
 class State(BaseModel, Base):
-    """ State class """
+    """It is state class """
     __tablename__ = 'states'
     if getenv("HBNB_TYPE_STORAGE") == 'db':
         name = Column(String(128), nullable=False)
@@ -24,7 +24,7 @@ class State(BaseModel, Base):
     if getenv('HBNB_TYPE_STORAGE') != 'db':
         @property
         def cities(self):
-            """relationship between city and state"""
+            """It is relationship between city and state"""
             from models import storage
             new_city = []
             all_cities = storage.all(City)

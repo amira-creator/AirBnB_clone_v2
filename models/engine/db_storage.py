@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""model containing database for storage"""
+"""It is model having  database for storage"""
 
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
@@ -20,13 +20,13 @@ classes = {"State": State, "City": City, "User": User,
 
 
 class DBStorage:
-    """classe that defines dbstorage instances"""
+    """It is classe that determine dbstorage instances"""
 
     __engine = None
     __session = None
 
     def __init__(self):
-        """function that initializes public instances"""
+        """It is func which initializes public instances"""
         user = getenv("HBNB_MYSQL_USER")
         password = getenv("HBNB_MYSQL_PWD")
         host = getenv("HBNB_MYSQL_HOST")
@@ -38,7 +38,7 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """returns models of current database"""
+        """It returns models of current database"""
         dictionary = {}
         if cls is None:
             for elem in classes.values():
@@ -54,7 +54,7 @@ class DBStorage:
         return dictionary
 
     def new(self, obj):
-        """function that adds object to database"""
+        """It is func which adds object to database"""
         if obj is not None:
             try:
                 self.__session.add(obj)
@@ -65,21 +65,21 @@ class DBStorage:
                 raise error
 
     def save(self):
-        """function that commit all changes of the current database session"""
+        """It func  commit all changes of current database session"""
         self.__session.commit()
 
     def delete(self, obj=None):
-        """delete from the current database session"""
+        """It delete from current database session"""
         if obj is not None:
             self.__session.query(type(obj)).filter(
                 type(obj).id == obj.id).delete()
 
     def reload(self):
-        """function that create all tables in the database"""
+        """function create all tables in database"""
         Base.metadata.create_all(self.__engine)
         se_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(se_factory)()
 
     def close(self):
-        """function that closes current database"""
+        """function closes current database"""
         self.__session.close()

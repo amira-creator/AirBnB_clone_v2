@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""module defines class User"""
+"""It is a module defines class User"""
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from os import getenv
@@ -7,7 +7,7 @@ from sqlalchemy.orm import relationship
 
 
 class User(BaseModel, Base):
-    """class defines user by various attributes"""
+    """It is a class defines user by various attributes"""
     __tablename__ = 'users'
     if getenv("HBNB_TYPE_STORAGE") == 'db':
         email = Column(String(128), nullable=False)
