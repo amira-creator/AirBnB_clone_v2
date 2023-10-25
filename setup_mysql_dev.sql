@@ -1,9 +1,9 @@
--- script that prepares a MySQL server for AirBnB Console v2
+-- script prepares MySQL server for AirBnB Console v2
 -- create database
 CREATE DATABASE IF NOT EXISTS hbnb_dev_db;
 
 -- create user if not exist
--- user should should be identified with password hbnb_dev_pwd
+-- user should be identified with password hbnb_dev_pwd
 CREATE USER IF NOT EXISTS 'hbnb_dev'@'localhost' IDENTIFIED BY 'hbnb_dev_pwd';
 
 -- grant hbnb_dev all previleges on hbnb_dev_db
