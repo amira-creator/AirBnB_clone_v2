@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Python module to compress all web_static files"""
+"""Python module to compress all web static files"""
 from fabric.api import local
 from time import strftime
 
