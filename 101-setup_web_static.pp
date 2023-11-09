@@ -1,4 +1,4 @@
-# Redo the task #0 but by using Puppet:
+# Redo task #0 but by using Puppet:
 $nginx_conf = "server {
     listen 80 default_server;
     listen [::]:80 default_server;

@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-"""Python module to compress all web static files"""
+"""Python module to compress all web_static files"""
 from fabric.api import local
 from time import strftime
-
 
 def do_pack():
     """A function that generates .tgz archive from contents of web_static"""
